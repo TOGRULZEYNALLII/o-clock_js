@@ -10,14 +10,29 @@
             box-sizing: border-box;
             font-family:    Verdana,sans-serif;
         }
+        .clock::after{
+            content: '';
+            position: absolute;
+            background-color: black;
+            z-index: 11;
+            width: 15px;
+            height: 15px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border-radius:50% ;
+        }
         body{
             background: linear-gradient(to right,hsl(200,100%,50%),hsl(175,100%,50%));
-               
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               min-height: 100vh;
+               overflow: hidden;
              
         }
         .clock{
-            margin-inline: 450px;
-            margin-block:100px ;
+           
             width: 300px ;
             height: 300px;
             background-color: rgba(255, 255, 255, .8);
@@ -34,6 +49,7 @@
             height: 100%;
             text-align: center;
             transform: rotate(var(--rotation));
+            font-size: 1.5rem;
 
         }
         .clock .number1{--rotation:30deg;}
@@ -47,14 +63,37 @@
         .clock .number9{--rotation:270deg;}
         .clock .number10{--rotation:300deg;}
         .clock .number11{--rotation:330deg;}
-            .clock .hand{
+           
+        .clock .hand{
+                --rotation:0;
                 position: absolute;
                 bottom: 50%;
                 left:50%;
+                background-color: black;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                transform-origin:bottom ;
+                z-index: 10;
+                border: 1 px solid white;
+                transform: translateX(-50%) rotate(var(--rotation));
+            }
+            .clock .hand.second{
+                width: 3px;
+                height: 45%;
+                background-color: red   ;
+            }
+            .clock .hand.minute{
+                width: 7px;
+                height: 40%;
+                background-color:black;
+            }
+            .clock .hand.hour{
+                width: 10px;
+                height: 35%;
+                background-color: black;
             }
     </style>
 </head>
-//testing 2 commit
 <body>
     <div class="clock">
         <div class="hand hour"></div>
